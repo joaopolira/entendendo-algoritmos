@@ -120,4 +120,23 @@ class MyList:
             minor_index = self.__get_minor(arr)
             minor = arr.pop(minor_index)
             new_names.append(minor)
+            new_names.__getitem__()
         self.names = new_names
+
+    def quick_sort(self, arr: [] = None):
+        if arr is None:
+            arr = self.names
+
+        if arr.__len__() <= 1:
+            return arr
+        else:
+            mid = int(arr.__len__() / 2)
+            pivo = arr[mid]
+            minors = []
+            biggers = []
+            for item in arr:
+                if item < pivo:
+                    minors.append(item)
+                if item > pivo:
+                    biggers.append(item)
+            return self.quick_sort(minors) + [pivo] + self.quick_sort(biggers)
